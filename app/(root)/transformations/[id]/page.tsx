@@ -1,9 +1,6 @@
-"use client";
-
 import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { GetServerSideProps } from "next";
 
 import Header from "@/components/shared/Header";
 import TransformedImage from "@/components/shared/TransformedImage";
@@ -12,14 +9,7 @@ import { getImageById } from "@/lib/actions/image.actions";
 import { getImageSize } from "@/lib/utils";
 import { DeleteConfirmation } from "@/components/shared/DeleteConfirmation";
 
-// Define the type for the props
-interface SearchParamProps {
-  params: {
-    id: string;
-  };
-}
-
-const ImageDetails: React.FC<SearchParamProps> = async ({ params: { id } }) => {
+const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
   const { userId } = auth();
 
   const image = await getImageById(id);
