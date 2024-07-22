@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
 import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { GetServerSideProps } from "next";
 
 import Header from "@/components/shared/Header";
 import TransformedImage from "@/components/shared/TransformedImage";
@@ -11,7 +12,14 @@ import { getImageById } from "@/lib/actions/image.actions";
 import { getImageSize } from "@/lib/utils";
 import { DeleteConfirmation } from "@/components/shared/DeleteConfirmation";
 
-const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
+// Define the type for the props
+interface SearchParamProps {
+  params: {
+    id: string;
+  };
+}
+
+const ImageDetails: React.FC<SearchParamProps> = async ({ params: { id } }) => {
   const { userId } = auth();
 
   const image = await getImageById(id);
@@ -101,6 +109,4 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
   );
 };
 
-
-//this transformations doest have a route like - localhost:3000/transformations
-//btw this have a id where we can use any route - localhost:3000/transformation/{id} -- which is dynamic route
+export default ImageDetails;
