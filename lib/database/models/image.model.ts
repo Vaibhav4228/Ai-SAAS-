@@ -3,6 +3,7 @@ import {Schema, model, models} from "mongoose";
 //creating a interface so thats why our frontend is know the models
 
 export interface IImage extends Document {
+  _id: any;
   title: string;
   transformationType: string;
   publicId: string;

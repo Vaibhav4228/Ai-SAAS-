@@ -1,5 +1,4 @@
-/* eslint-disable prefer-const */
-/* eslint-disable no-prototype-builtins */
+
 import { type ClassValue, clsx } from "clsx";
 import qs from "qs";
 import { twMerge } from "tailwind-merge";
@@ -92,6 +91,8 @@ export const debounce = (func: (...args: any[]) => void, delay: number) => {
     timeoutId = setTimeout(() => func.apply(null, args), delay);
   };
 };
+
+
 
 // GE IMAGE SIZE
 export type AspectRatioKey = keyof typeof aspectRatioOptions;
